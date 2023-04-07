@@ -2,13 +2,20 @@ import "./main.css";
 import Sidebar from "../sidebar/Sidebar";
 import { useEffect, useRef, useState } from "react";
 import searchIcon from "../../assest/magnifying-glass.png";
+import playIcon from "../../assest/play.png";
+import pauseIcon from "../../assest/pause-button.png";
+import nextBtnIcon from "../../assest/next-button.png";
+import prevBtnIcon from "../../assest/previous.png";
+import dotIcon from "../../assest/equalizer.png";
+import volumeIcon from "../../assest/volume-up.png";
 
 const Main = () => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
-  // const audioRef = useRef(null);
-
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0); //slider/range
   const apiEndpoint = "https://api.ss.dev/resource/api";
   const query = `query GetPlaylists($playlistId: Int!, $search: String!) {
     getSongs(playlistId: $playlistId, search: $search) {
@@ -63,6 +70,29 @@ const Main = () => {
   // }
 
   // search functionality end
+
+  // handle play and pause start
+
+  const handlePlay = () => {
+    setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+  };
+  // handle play and pause end
+
+  // input range/slider start
+  const handleSliderChange = (event) => {
+    audioRef.current.currentTime = event.target.value;
+  };
+
+  const handleTimeUpdate = () => {
+    setCurrentTime(audioRef.current.currentTime);
+  };
+  // input range/slider end
+
   return (
     <div className="main-container">
       <Sidebar />
@@ -92,7 +122,11 @@ const Main = () => {
                     <p>{songs?.artist}</p>
                   </div>
                 </section>
-                <section>{songs?.duration / 60}</section>
+                <section>
+                  {Math.floor(songs?.duration / 60) +
+                    ":" +
+                    Math.floor(songs?.duration % 60)}
+                </section>
               </div>
             );
           })}
@@ -114,8 +148,51 @@ const Main = () => {
 
               {/* {console.log("song" + selectedSong.url)} */}
             </div>
+            <input
+              type="range"
+              min="0"
+              max={audioRef?.current?.duration}
+              value={currentTime}
+              onChange={handleSliderChange}
+              className="slider"
+            />
             <div className="music-control-container">
-              <h1>heosssssssssssssssssssssssssssss</h1>
+              <audio
+                ref={audioRef}
+                src={selectedSong?.url}
+                onTimeUpdate={handleTimeUpdate}
+              />
+
+              <div className="first-control">
+                <img src={dotIcon} alt="icon" className="dot-icon" />
+              </div>
+              <div className="second-control">
+                <img
+                  src={prevBtnIcon}
+                  alt="previous-icon"
+                  className="prev-icon"
+                />
+                {isPlaying ? (
+                  <img
+                    src={pauseIcon}
+                    alt="pause-icon"
+                    className="pause-icon"
+                    onClick={handlePlay}
+                  />
+                ) : (
+                  <img
+                    src={playIcon}
+                    alt="play-icon"
+                    className="play-icon"
+                    onClick={handlePlay}
+                  />
+                )}
+
+                <img src={nextBtnIcon} alt="next-icon" className="next-icon" />
+              </div>
+              <div className="third-control">
+                <img src={volumeIcon} alt="" className="volume-icon" />
+              </div>
             </div>
           </div>
         )}

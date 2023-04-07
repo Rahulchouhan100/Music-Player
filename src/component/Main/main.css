@@ -12,7 +12,8 @@
   flex-basis: 40%;
   border: 1px solid blue;
   padding: 1rem;
-  overflow: hidden;
+
+  overflow-y: scroll;
 }
 /* search container start ------------------  */
 /* ::-webkit-scrollbar {
@@ -66,8 +67,10 @@
   .single-data-container
   .song-details
   img {
-  width: 11%;
-  height: auto;
+  /* width: 11%; */
+  object-fit: cover;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 }
 /* list container end ------------------------ */
@@ -101,5 +104,58 @@
   font-size: 2rem;
   color: gray;
 }
+
+/* music control container -------------------  */
+.main-container .music-control-container {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  /* margin-top: 5rem; */
+  width: 70%;
+}
+
+.main-container .music-control-container .first-control .dot-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.main-container .music-control-container .second-control {
+  display: flex;
+  gap: 2rem;
+}
+.main-container .music-control-container .second-control .pause-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.main-container .music-control-container .second-control .prev-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.main-container .music-control-container .second-control .play-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.main-container .music-control-container .second-control .next-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.main-container .music-control-container .third-control .volume-icon {
+  width: 3rem;
+  cursor: pointer;
+}
+.slider {
+  background-color: red;
+}
+
+input[type="range"] {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  width: 70%;
+  background: rgba(225, 13, 13, 0.6);
+  border-radius: 0.5rem;
+}
+
+/* music control container end-------------------  */
 
 /* last container end ------------------ */
