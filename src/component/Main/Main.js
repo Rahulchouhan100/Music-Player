@@ -7,7 +7,7 @@ const Main = () => {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
-  const audioRef = useRef(null);
+  // const audioRef = useRef(null);
 
   const apiEndpoint = "https://api.ss.dev/resource/api";
   const query = `query GetPlaylists($playlistId: Int!, $search: String!) {
@@ -86,13 +86,13 @@ const Main = () => {
                 onClick={() => handleSongClick(songs)}
               >
                 <section className="song-details">
-                  <img src={songs.photo} alt="photo" />
+                  <img src={songs?.photo} alt="photo" />
                   <div>
-                    <h3>{songs.title}</h3>
-                    <p>{songs.artist}</p>
+                    <h3>{songs?.title}</h3>
+                    <p>{songs?.artist}</p>
                   </div>
                 </section>
-                <section>{songs.duration / 60}</section>
+                <section>{songs?.duration / 60}</section>
               </div>
             );
           })}
@@ -102,25 +102,21 @@ const Main = () => {
         {selectedSong && (
           <div>
             <div className="single-song-container">
-              <h3 className="title">{selectedSong.title}</h3>
-              <p className="artist">{selectedSong.artist}</p>
+              <h3 className="title">{selectedSong?.title}</h3>
+              <p className="artist">{selectedSong?.artist}</p>
               <div className="single-song-image">
                 <img
-                  src={selectedSong.photo}
+                  src={selectedSong?.photo}
                   alt="song-photo"
                   className="song-photo"
                 />
               </div>
-              <audio
-                ref={audioRef}
-                src={selectedSong.url}
-                autoPlay
-                controls
-                onEnded={() => setSelectedSong(null)}
-              />
-              {console.log("song" + selectedSong.url)}
+
+              {/* {console.log("song" + selectedSong.url)} */}
             </div>
-            <div></div>
+            <div className="music-control-container">
+              <h1>heosssssssssssssssssssssssssssss</h1>
+            </div>
           </div>
         )}
       </div>
