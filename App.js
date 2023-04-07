@@ -1,10 +1,12 @@
 import ReactDOM from "react-dom/client";
+import "./index.css";
+import Main from "./src/component/Main/Main";
 
 const App = () => {
   return (
-    <>
-      <h1>hello</h1>
-    </>
+    <div>
+      <Main />
+    </div>
   );
 };
 

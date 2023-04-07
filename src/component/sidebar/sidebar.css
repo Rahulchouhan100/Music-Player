@@ -1,0 +1,26 @@
+.sidebar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid red;
+  flex-basis: 15%;
+  background-color: black;
+  padding: 1rem;
+}
+.sidebar div:nth-child(1) .logo {
+  width: 60%;
+  margin-bottom: 2rem;
+}
+.sidebar div:nth-child(1) ul li {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.sidebar div:nth-child(1) ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+}
+.sidebar div:nth-child(2) .profile-photo {
+  width: 20%;
+  border-radius: 50%;
+}

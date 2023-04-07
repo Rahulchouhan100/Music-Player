@@ -1,0 +1,17 @@
+.main-container {
+  border: 1px solid red;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  padding: 1rem 2%;
+  gap: 5rem;
+}
+.main-container .middle-container {
+  flex-basis: 40%;
+  border: 1px solid blue;
+}
+
+.main-container .last-container {
+  flex-basis: 45%;
+  border: 1px solid blue;
+}
