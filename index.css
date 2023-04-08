@@ -9,10 +9,14 @@
 html {
   font-size: 62.5%;
 }
-/* body {
-  background-color: #000;
-  color: white;
-} */
+body {
+  background: linear-gradient(
+      to bottom,
+      rgba(164, 129, 132, 0),
+      rgba(164, 129, 132, 0.8)
+    ),
+    linear-gradient(to right, rgba(57, 41, 51, 0), rgba(57, 41, 51, 0.8));
+}
 
 /* width */
 ::-webkit-scrollbar {

@@ -9,6 +9,8 @@ import prevBtnIcon from "../../assest/previous.png";
 import dotIcon from "../../assest/equalizer.png";
 import volumeIcon from "../../assest/volume-up.png";
 import Shimmer from "../shimmer/Shimmer";
+import playCircle from "../../assest/play-circle.png";
+import ForYou from "../forYou/ForYou";
 
 const Main = () => {
   const [data, setData] = useState([]);
@@ -42,6 +44,13 @@ const Main = () => {
       .then((data) => setData(data?.data?.getSongs))
       .catch(console.error);
   };
+  // useEffect(() => {
+  //   if (selectedSong) {
+  //     const body = document.body;
+  //     const gradient = `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(${selectedSong.photo})`;
+  //     body.style.background = gradient;
+  //   }
+  // }, [selectedSong]);
 
   useEffect(() => {
     getData(1);
@@ -65,10 +74,10 @@ const Main = () => {
       song.artist.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // if (filteredData.length === 0) {
-  //   filteredData = [{ _id: "nodata" }];
-  //   // return <h1>NO data found </h1>;
-  // }
+  if (filteredData.length === 0) {
+    filteredData = [{ _id: "nodata" }];
+    // return <h1>NO data found </h1>;
+  }
 
   // search functionality end
 
@@ -103,7 +112,6 @@ const Main = () => {
     setSelectedSong(data[prevIndex]);
   };
 
-  // Handle next song click
   const handleNextSong = () => {
     const currentIndex = data.findIndex(
       (song) => song._id === selectedSong._id
@@ -112,46 +120,22 @@ const Main = () => {
     setSelectedSong(data[nextIndex]);
   };
 
+  useEffect(() => {
+    // If no song is selected, select the first song in the data array
+    if (!selectedSong && data.length > 0) {
+      setSelectedSong(data[0]);
+    }
+  }, [data]);
   return (
     <div className="main-container">
       <Sidebar />
-      <div className="middle-container">
-        <h2>For You</h2>
-        <div className="search-container">
-          <input
-            type="search"
-            placeholder="Search Song , Artist"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-          <img src={searchIcon} alt="searchIcon" className="search-icon" />
-        </div>
-        <div className="list-container">
-          {filteredData.map((songs, ind) => {
-            return (
-              <div
-                className="single-data-container"
-                key={songs._id}
-                onClick={() => handleSongClick(songs)}
-              >
-                <section className="song-details">
-                  <img src={songs?.photo} alt="photo" />
-                  <div>
-                    <h3>{songs?.title}</h3>
-                    <p>{songs?.artist}</p>
-                  </div>
-                </section>
-                <section>
-                  {Math.floor(songs?.duration / 60) +
-                    ":" +
-                    Math.floor(songs?.duration % 60)}
-                </section>
-              </div>
-            );
-          })}
-        </div>
-        {/* <Shimmer /> */}
-      </div>
+      <ForYou
+        searchQuery={searchQuery}
+        handleSearch={handleSearch}
+        filteredData={filteredData}
+        handleSongClick={handleSongClick}
+        data={data}
+      />
       <div className="last-container">
         {selectedSong && (
           <div>
@@ -210,7 +194,7 @@ const Main = () => {
                   />
                 ) : (
                   <img
-                    src={playIcon}
+                    src={playCircle}
                     alt="play-icon"
                     className="play-icon"
                     onClick={handlePlay}

@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   flex-basis: 15%;
-  background-color: black;
+  /* background-color: black; */
   padding: 1rem;
 }
 .sidebar div:nth-child(1) .logo {

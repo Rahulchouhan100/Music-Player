@@ -18,14 +18,3 @@ const Shimmer = () => {
 };
 
 export default Shimmer;
-
-{
-  Array(8)
-    .fill("")
-    .map((e, index) => (
-      <div className="shimmer" key={index}>
-        <div></div>
-        {/* <div></div> */}
-      </div>
-    ));
-}
