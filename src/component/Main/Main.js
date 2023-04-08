@@ -8,6 +8,7 @@ import nextBtnIcon from "../../assest/next-button.png";
 import prevBtnIcon from "../../assest/previous.png";
 import dotIcon from "../../assest/equalizer.png";
 import volumeIcon from "../../assest/volume-up.png";
+import Shimmer from "../shimmer/Shimmer";
 
 const Main = () => {
   const [data, setData] = useState([]);
@@ -93,6 +94,24 @@ const Main = () => {
   };
   // input range/slider end
 
+  // handle prev and next song
+  const handlePrevSong = () => {
+    const currentIndex = data.findIndex(
+      (song) => song._id === selectedSong._id
+    );
+    const prevIndex = (currentIndex - 1 + data.length) % data.length;
+    setSelectedSong(data[prevIndex]);
+  };
+
+  // Handle next song click
+  const handleNextSong = () => {
+    const currentIndex = data.findIndex(
+      (song) => song._id === selectedSong._id
+    );
+    const nextIndex = (currentIndex + 1) % data.length;
+    setSelectedSong(data[nextIndex]);
+  };
+
   return (
     <div className="main-container">
       <Sidebar />
@@ -131,6 +150,7 @@ const Main = () => {
             );
           })}
         </div>
+        {/* <Shimmer /> */}
       </div>
       <div className="last-container">
         {selectedSong && (
@@ -145,8 +165,6 @@ const Main = () => {
                   className="song-photo"
                 />
               </div>
-
-              {/* {console.log("song" + selectedSong.url)} */}
             </div>
             <input
               type="range"
@@ -161,6 +179,16 @@ const Main = () => {
                 ref={audioRef}
                 src={selectedSong?.url}
                 onTimeUpdate={handleTimeUpdate}
+                onEnded={() => {
+                  const nextSongIndex =
+                    data.findIndex((song) => song._id === selectedSong._id) + 1;
+                  if (nextSongIndex >= data.length) {
+                    setSelectedSong(null);
+                  } else {
+                    setSelectedSong(data[nextSongIndex]);
+                    audioRef.current.play();
+                  }
+                }}
               />
 
               <div className="first-control">
@@ -171,6 +199,7 @@ const Main = () => {
                   src={prevBtnIcon}
                   alt="previous-icon"
                   className="prev-icon"
+                  onClick={handlePrevSong}
                 />
                 {isPlaying ? (
                   <img
@@ -188,7 +217,12 @@ const Main = () => {
                   />
                 )}
 
-                <img src={nextBtnIcon} alt="next-icon" className="next-icon" />
+                <img
+                  src={nextBtnIcon}
+                  alt="next-icon"
+                  className="next-icon"
+                  onClick={handleNextSong}
+                />
               </div>
               <div className="third-control">
                 <img src={volumeIcon} alt="" className="volume-icon" />

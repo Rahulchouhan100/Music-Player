@@ -1,4 +1,20 @@
-.search-shimmer {
+.shimmer-container .list-shimmer {
+  /* background-color: red;  */
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.shimmer-container .list-shimmer .first-container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+}
+.shimmer-container .list-shimmer .second-container {
+  width: 90%;
+  height: 3rem;
   background: linear-gradient(
     to right,
     #f0f0f0 0%,
@@ -8,16 +24,22 @@
     #f0f0f0 80%,
     #f8f8f8 100%
   );
-  width: 50%;
-  height: 4.5rem;
-  margin: 2rem auto;
-  border-radius: 3rem;
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
 }
-.shimmer-container {
+
+@keyframes shimmer {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* .shimmer-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-left: 11rem;
+  flex-direction: column;
 }
 .shimmer {
   background-color: rgb(254, 253, 253);
@@ -42,34 +64,7 @@
   animation: shimmer 2s linear infinite;
   background-size: 200% 100%;
 }
-.shimmer > div:nth-child(2) {
-  margin-top: 1rem;
-  height: 3rem;
-  width: 70%;
-  background: linear-gradient(
-    to right,
-    #f0f0f0 0%,
-    #f8f8f8 20%,
-    #f0f0f0 40%,
-    #f8f8f8 60%,
-    #f0f0f0 80%,
-    #f8f8f8 100%
-  );
-}
-.shimmer > div:nth-child(3) {
-  margin-top: 1rem;
-  height: 2rem;
-  width: 40%;
-  background: linear-gradient(
-    to right,
-    #f0f0f0 0%,
-    #f8f8f8 20%,
-    #f0f0f0 40%,
-    #f8f8f8 60%,
-    #f0f0f0 80%,
-    #f8f8f8 100%
-  );
-}
+
 @keyframes shimmer {
   0% {
     background-position: -100%;
@@ -83,4 +78,4 @@
   .shimmer-container {
     margin-left: 2.1rem;
   }
-}
+} */

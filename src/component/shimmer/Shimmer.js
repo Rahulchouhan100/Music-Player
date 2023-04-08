@@ -3,15 +3,13 @@ import "./Shimmer.css";
 const Shimmer = () => {
   return (
     <>
-      <div className="search-shimmer"></div>
       <div className="shimmer-container">
-        {Array(15)
+        {Array(8)
           .fill("")
           .map((e, index) => (
-            <div className="shimmer" key={index}>
-              <div></div>
-              <div></div>
-              <div></div>
+            <div className="list-shimmer">
+              <div className="first-container"></div>
+              <div className="second-container"></div>
             </div>
           ))}
       </div>
@@ -20,3 +18,14 @@ const Shimmer = () => {
 };
 
 export default Shimmer;
+
+{
+  Array(8)
+    .fill("")
+    .map((e, index) => (
+      <div className="shimmer" key={index}>
+        <div></div>
+        {/* <div></div> */}
+      </div>
+    ));
+}

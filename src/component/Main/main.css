@@ -25,6 +25,7 @@
   align-items: center;
   border: 1px solid gray;
   border-radius: 0.5rem;
+  width: 100%;
 }
 .main-container .middle-container .search-container input {
   width: 100%;
@@ -79,13 +80,13 @@
 
 /* last container start -----------------  */
 .main-container .last-container {
-  flex-basis: 45%;
+  flex-basis: 35%;
   border: 1px solid blue;
   padding: 2rem;
 }
 
 .single-song-container .single-song-image {
-  width: 70%;
+  width: 90%;
   height: 30rem;
   margin-top: 2rem;
   /* border: 1px solid red; */
@@ -113,7 +114,7 @@
   align-items: center;
   /* border: 1px solid red; */
   /* margin-top: 5rem; */
-  width: 70%;
+  width: 90%;
 }
 
 .main-container .music-control-container .first-control .dot-icon {
@@ -149,9 +150,9 @@
 }
 
 input[type="range"] {
-  margin-top: 4rem;
+  margin-top: 6rem;
   margin-bottom: 1rem;
-  width: 70%;
+  width: 90%;
   background: rgba(225, 13, 13, 0.6);
   border-radius: 0.5rem;
 }
