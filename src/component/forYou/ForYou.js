@@ -7,12 +7,17 @@ const ForYou = ({
   filteredData,
   handleSongClick,
   data,
+  showContainer,
 }) => {
+  {
+    console.log("container" + showContainer);
+  }
   return data.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="middle-container">
+    <div className={`middle-container ${showContainer && "show"}`}>
       <h2>For You</h2>
+
       <div className="search-container">
         <input
           type="search"

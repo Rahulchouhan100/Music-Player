@@ -8,11 +8,14 @@
 }
 
 /* Middle container start ----------------  */
+
 .middle-container {
   flex-basis: 40%;
   padding: 1rem;
   overflow-y: scroll;
+  /* display: block; */
 }
+
 .middle-container h2 {
   color: white;
   font-size: 2.3rem;
@@ -117,7 +120,14 @@
   padding: 2rem;
   /* background-color: red; */
 }
-
+.single-song-container .single-song-header {
+  display: flex;
+  justify-content: space-between;
+}
+.single-song-container .single-song-header .menu-btn {
+  cursor: pointer;
+  display: none;
+}
 .single-song-container .single-song-image {
   width: 90%;
   height: 30rem;
@@ -162,12 +172,10 @@
 .main-container .music-control-container .second-control .pause-icon {
   width: 3rem;
   cursor: pointer;
-  background-color: white;
 }
 .main-container .music-control-container .second-control .prev-icon {
   width: 3rem;
   cursor: pointer;
-  background-color: white;
 }
 .main-container .music-control-container .second-control .play-icon {
   width: 3rem;
@@ -176,40 +184,70 @@
 .main-container .music-control-container .second-control .next-icon {
   width: 3rem;
   cursor: pointer;
-  background-color: white;
 }
 .main-container .music-control-container .third-control .volume-icon {
   width: 3rem;
   cursor: pointer;
 }
-.slider {
-  background-color: red;
+.show {
+  display: block !important;
 }
 
 input[type="range"] {
   margin-top: 6rem;
   margin-bottom: 1rem;
   width: 90%;
-  background: rgba(225, 13, 13, 0.6);
-  border-radius: 0.5rem;
+}
+@media (min-width: 0px) and (max-width: 480px) {
+  body {
+    background-color: red;
+  }
+  .main-container {
+    /* border: 1px solid red; */
+    gap: 0rem;
+  }
+  .middle-container {
+    display: none;
+  }
+
+  .last-container {
+    flex-basis: 50%;
+    padding: 1rem;
+  }
+  .single-song-container .single-song-header .menu-btn {
+    display: block;
+  }
+  .single-song-container .title {
+    font-size: 1.5rem;
+  }
+  .single-song-container .artist {
+    font-size: 1rem;
+  }
+  .single-song-container .single-song-image .song-photo {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  .single-song-container .single-song-image {
+    width: 20rem;
+    height: 12rem;
+  }
+  input[type="range"] {
+    margin-top: 10rem;
+    width: 100%;
+  }
+  .main-container .music-control-container .second-control .pause-icon,
+  .main-container .music-control-container .second-control .prev-icon,
+  .main-container .music-control-container .second-control .play-icon,
+  .main-container .music-control-container .second-control .next-icon,
+  .main-container .music-control-container .third-control .volume-icon,
+  .main-container .music-control-container .first-control .dot-icon {
+    width: 2rem;
+  }
 }
 
-/* music control container end-------------------  */
+@media (min-width: 481px) and (max-width: 768px) {
+}
+@media (min-width: 769px) and (max-width: 1279px) {
+}
 
-/* last container end ------------------ */
-
-/* media query ----------  */
-
-/* .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)),
-    linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-} */
+/* media query end  */

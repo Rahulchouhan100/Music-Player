@@ -3,7 +3,12 @@ import SearchIcon from "../../assest/magnifying-glass.png";
 import "./toptrack.css";
 
 import "./toptrack.css";
-const TopTrack = ({ handleSongClick, handleSearch, searchQuery }) => {
+const TopTrack = ({
+  handleSongClick,
+  handleSearch,
+  searchQuery,
+  showContainer,
+}) => {
   const [data, setData] = useState([]);
   const [selectedSong, setSelectedSong] = useState(null);
   const apiEndpoint = "https://api.ss.dev/resource/api";
@@ -44,7 +49,11 @@ const TopTrack = ({ handleSongClick, handleSearch, searchQuery }) => {
 
   return (
     <div>
-      <div className="middle-container container-scroll">
+      <div
+        className={`middle-container container-scroll ${
+          showContainer && "show"
+        }`}
+      >
         <h2>Top Tracks</h2>
         <div className="search-container">
           <input

@@ -12,7 +12,7 @@ const Main = () => {
   const [showTopTracks, setShowTopTracks] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
   const [showRecentlyPlayed, setShowRecentlyPlayed] = useState(false);
-
+  const [showContainer, setShowContainer] = useState(false);
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
@@ -135,6 +135,7 @@ const Main = () => {
           filteredData={filteredData}
           handleSongClick={handleSongClick}
           data={data}
+          showContainer={showContainer}
         />
       )}
 
@@ -145,6 +146,7 @@ const Main = () => {
           filteredData={filteredData}
           handleSongClick={handleSongClick}
           data={data}
+          showContainer={showContainer}
         />
       )}
       {showFavorites && (
@@ -178,6 +180,7 @@ const Main = () => {
         isPlaying={isPlaying}
         handleSongClick={handleSongClick}
         data={data}
+        setShowContainer={setShowContainer}
       />
     </div>
   );

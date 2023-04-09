@@ -17,13 +17,24 @@ const SongDetails = ({
   handleNextSong,
   handlePlay,
   isPlaying,
+  setShowContainer,
 }) => {
+  const handlerShow = () => {
+    setShowContainer((prev) => !prev);
+    console.log(setShowContainer);
+  };
   return (
     <div className="last-container">
       {selectedSong && (
         <div>
           <div className="single-song-container">
-            <h3 className="title">{selectedSong?.title}</h3>
+            <div className="single-song-header">
+              <h3 className="title">{selectedSong?.title}</h3>
+              <button className="menu-btn" onClick={handlerShow}>
+                btn
+              </button>
+            </div>
+
             <p className="artist">{selectedSong?.artist}</p>
             <div className="single-song-image">
               <img
