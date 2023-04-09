@@ -22,9 +22,7 @@
 }
 .middle-container .search-container {
   display: flex;
-
   align-items: center;
-
   width: 100%;
 }
 .main-container .middle-container .search-container input {
@@ -56,6 +54,9 @@
   justify-content: space-between;
   padding: 0.5rem 0.5rem;
   border-radius: 0.5rem;
+}
+.middle-container .list-container .single-data-container:hover {
+  background-color: rgb(103, 101, 101);
 }
 .main-container
   .middle-container

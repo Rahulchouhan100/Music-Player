@@ -2,9 +2,9 @@
   "name": "samespace-task",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Rahul Chouhan",
   "license": "ISC",
