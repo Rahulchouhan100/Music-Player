@@ -9,9 +9,6 @@ const ForYou = ({
   data,
   showContainer,
 }) => {
-  {
-    console.log("container" + showContainer);
-  }
   return data.length === 0 ? (
     <Shimmer />
   ) : (

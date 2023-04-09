@@ -6,6 +6,8 @@ import dotIcon from "../../assest/equalizer.png";
 import volumeIcon from "../../assest/volume-up.png";
 import playCircle from "../../assest/play-circle.png";
 import { useEffect } from "react";
+import hamburger from "../../assest/menu.png";
+import closeIcon from "../../assest/close.png";
 
 const SongDetails = ({
   selectedSong,
@@ -19,9 +21,11 @@ const SongDetails = ({
   isPlaying,
   setShowContainer,
 }) => {
+  const [toggle, setToggle] = useState(false);
+
   const handlerShow = () => {
     setShowContainer((prev) => !prev);
-    console.log(setShowContainer);
+    setToggle(!toggle);
   };
   return (
     <div className="last-container">
@@ -30,9 +34,32 @@ const SongDetails = ({
           <div className="single-song-container">
             <div className="single-song-header">
               <h3 className="title">{selectedSong?.title}</h3>
-              <button className="menu-btn" onClick={handlerShow}>
-                btn
-              </button>
+              {toggle ? (
+                <button
+                  className="menu-btn"
+                  onClick={handlerShow}
+                  style={{
+                    padding: ".8rem",
+                    backgroundColor: "white",
+                    border: "none",
+                  }}
+                >
+                  <img src={closeIcon} alt="" style={{ width: "12px" }} />
+                </button>
+              ) : (
+                <button
+                  className="menu-btn"
+                  onClick={handlerShow}
+                  style={{
+                    padding: "0 .8rem",
+                    fontSize: "2rem",
+                    backgroundColor: "white",
+                    border: "none",
+                  }}
+                >
+                  <img src={hamburger} alt="" style={{ width: "12px" }} />
+                </button>
+              )}
             </div>
 
             <p className="artist">{selectedSong?.artist}</p>

@@ -66,13 +66,7 @@ const Main = () => {
       song.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       song.artist.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  if (filteredData.length === 0) {
-    filteredData = [{ _id: "nodata" }];
-    // return <h1>NO data found </h1>;
-  }
-
-  // search functionality end
+  // search functionality end --------
 
   // handle play and pause start
 
@@ -156,6 +150,7 @@ const Main = () => {
           filteredData={filteredData}
           handleSongClick={handleSongClick}
           data={data}
+          showContainer={showContainer}
         />
       )}
       {showRecentlyPlayed && (
@@ -165,6 +160,7 @@ const Main = () => {
           filteredData={filteredData}
           handleSongClick={handleSongClick}
           data={data}
+          showContainer={showContainer}
         />
       )}
 

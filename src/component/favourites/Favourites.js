@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import SearchIcon from "../../assest/magnifying-glass.png";
 
-const Favourites = ({ handleSongClick, handleSearch, searchQuery }) => {
+const Favourites = ({
+  handleSongClick,
+  handleSearch,
+  searchQuery,
+  showContainer,
+}) => {
   const [data, setData] = useState([]);
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
   const apiEndpoint = "https://api.ss.dev/resource/api";
@@ -41,7 +46,7 @@ const Favourites = ({ handleSongClick, handleSearch, searchQuery }) => {
   );
   return (
     <div>
-      <div className="middle-container container-scroll">
+      <div className={`middle-container  ${showContainer && "show"}`}>
         <h2>Favourites</h2>
         <div className="search-container">
           <input

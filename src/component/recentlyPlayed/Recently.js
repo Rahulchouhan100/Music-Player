@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "../../assest/magnifying-glass.png";
 
-const Recently = ({ searchQuery, handleSearch, handleSongClick }) => {
+const Recently = ({
+  searchQuery,
+  handleSearch,
+  handleSongClick,
+  showContainer,
+}) => {
   const [data, setData] = useState([]);
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
   const apiEndpoint = "https://api.ss.dev/resource/api";
@@ -42,7 +47,11 @@ const Recently = ({ searchQuery, handleSearch, handleSongClick }) => {
 
   return (
     <div>
-      <div className="middle-container container-scroll">
+      <div
+        className={`middle-container container-scroll ${
+          showContainer && "show"
+        }`}
+      >
         <h2>Recently Played</h2>
         <div className="search-container">
           <input

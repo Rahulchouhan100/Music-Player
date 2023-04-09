@@ -1,8 +1,8 @@
 .shimmer-container .list-shimmer {
-  /* background-color: red;  */
+  
   display: flex;
   align-items: center;
-  /* border: 1px solid red; */
+ 
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -57,5 +57,22 @@
   }
   .shimmer-container .list-shimmer .second-container {
     width: 15rem;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  .shimmer-container {
+    margin-left: 2rem;
+  }
+  .shimmer-container .input-shimmer {
+    width: 29rem;
+    height: 2rem;
+  }
+  .shimmer-container .list-shimmer .first-container {
+    width: 2rem;
+    height: 2rem;
+  }
+  .shimmer-container .list-shimmer .second-container {
+    width: 25rem;
   }
 }

@@ -8,7 +8,7 @@ const Shimmer = () => {
         {Array(8)
           .fill("")
           .map((e, index) => (
-            <div className="list-shimmer">
+            <div className="list-shimmer" key={index}>
               <div className="first-container"></div>
               <div className="second-container"></div>
             </div>

@@ -7,7 +7,6 @@ import Sidebar from "./src/component/sidebar/Sidebar";
 const App = () => {
   return (
     <div>
-      {/* <Sidebar /> */}
       <Main />
     </div>
   );

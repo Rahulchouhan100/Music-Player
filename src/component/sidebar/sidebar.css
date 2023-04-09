@@ -40,4 +40,22 @@
     border-radius: 50%;
   }
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .sidebar {
+    flex-basis: 25%;
+    padding: 0;
+  }
+  .sidebar div:nth-child(1) ul li {
+    font-size: 1.3rem;
+  }
+  .sidebar div:nth-child(2) .profile-photo {
+    width: 30%;
+    border-radius: 50%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1279px) {
+  .sidebar div:nth-child(1) ul li {
+    font-size: 1.3rem;
+  }
+}
 /* media query end  */
