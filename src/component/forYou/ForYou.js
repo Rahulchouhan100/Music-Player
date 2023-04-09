@@ -8,7 +8,7 @@ const ForYou = ({
   handleSongClick,
   data,
 }) => {
-  return filteredData.length === 0 ? (
+  return data.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="middle-container">

@@ -4,6 +4,7 @@ const Shimmer = () => {
   return (
     <>
       <div className="shimmer-container">
+        <div className="input-shimmer"></div>
         {Array(8)
           .fill("")
           .map((e, index) => (

@@ -6,6 +6,13 @@
   gap: 2rem;
   margin-top: 2rem;
 }
+.shimmer-container .input-shimmer {
+  margin-top: 2rem;
+  width: 46rem;
+  border-radius: 1rem;
+  height: 4rem;
+  background-color: #f0f0f0;
+}
 .shimmer-container .list-shimmer .first-container {
   width: 4rem;
   height: 4rem;
@@ -13,14 +20,14 @@
   background-color: #f0f0f0;
 }
 .shimmer-container .list-shimmer .second-container {
-  width: 90%;
+  width: 40rem;
   height: 3rem;
   background: linear-gradient(
     to right,
     #f0f0f0 0%,
     #f8f8f8 20%,
-    #f0f0f0 40%,
-    #f8f8f8 60%,
+    #6e6c6c 40%,
+    #565555 60%,
     #f0f0f0 80%,
     #f8f8f8 100%
   );
