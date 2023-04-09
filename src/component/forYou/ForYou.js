@@ -32,12 +32,12 @@ const ForYou = ({
             >
               <section className="song-details">
                 <img src={songs?.photo} alt="photo" />
-                <div>
+                <div className="title-artist">
                   <h3>{songs?.title}</h3>
                   <p>{songs?.artist}</p>
                 </div>
               </section>
-              <section>
+              <section style={{ color: "white" }}>
                 {Math.floor(songs?.duration / 60) +
                   ":" +
                   Math.floor(songs?.duration % 60)}

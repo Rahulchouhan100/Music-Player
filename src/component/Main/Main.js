@@ -2,9 +2,17 @@ import "./main.css";
 import Sidebar from "../sidebar/Sidebar";
 import { useEffect, useRef, useState } from "react";
 import ForYou from "../forYou/ForYou";
+import TopTrack from "../topTracks/TopTrack";
+import Recently from "../recentlyPlayed/Recently";
+import Favourites from "../favourites/Favourites";
 import SongDetails from "../songDetails/SongDetails";
 
 const Main = () => {
+  const [showForYou, setShowForYou] = useState(true);
+  const [showTopTracks, setShowTopTracks] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [showRecentlyPlayed, setShowRecentlyPlayed] = useState(false);
+
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSong, setSelectedSong] = useState(null); // hold the details of the selected song
@@ -36,13 +44,6 @@ const Main = () => {
       .then((data) => setData(data?.data?.getSongs))
       .catch(console.error);
   };
-  // useEffect(() => {
-  //   if (selectedSong) {
-  //     const body = document.body;
-  //     const gradient = `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(${selectedSong.photo})`;
-  //     body.style.background = gradient;
-  //   }
-  // }, [selectedSong]);
 
   useEffect(() => {
     getData(1);
@@ -121,14 +122,50 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <Sidebar />
-      <ForYou
-        searchQuery={searchQuery}
-        handleSearch={handleSearch}
-        filteredData={filteredData}
-        handleSongClick={handleSongClick}
-        data={data}
+      <Sidebar
+        setShowForYou={setShowForYou}
+        setShowTopTracks={setShowTopTracks}
+        setShowFavorites={setShowFavorites}
+        setShowRecentlyPlayed={setShowRecentlyPlayed}
       />
+      {showForYou && (
+        <ForYou
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+          filteredData={filteredData}
+          handleSongClick={handleSongClick}
+          data={data}
+        />
+      )}
+
+      {showTopTracks && (
+        <TopTrack
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+          filteredData={filteredData}
+          handleSongClick={handleSongClick}
+          data={data}
+        />
+      )}
+      {showFavorites && (
+        <Favourites
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+          filteredData={filteredData}
+          handleSongClick={handleSongClick}
+          data={data}
+        />
+      )}
+      {showRecentlyPlayed && (
+        <Recently
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+          filteredData={filteredData}
+          handleSongClick={handleSongClick}
+          data={data}
+        />
+      )}
+
       <SongDetails
         selectedSong={selectedSong}
         audioRef={audioRef}

@@ -8,20 +8,19 @@
 }
 
 /* Middle container start ----------------  */
-.main-container .middle-container {
+.middle-container {
   flex-basis: 40%;
-  /* border: 1px solid blue; */
   padding: 1rem;
-
   overflow-y: scroll;
 }
-/* search container start ------------------  */
-/* ::-webkit-scrollbar {
-  display: none;
-} */
-.main-container .middle-container .search-container {
+.middle-container h2 {
+  color: white;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.middle-container .search-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 
   /* border: 1px solid #000; */
@@ -37,15 +36,17 @@
   padding: 1rem;
   outline: none;
   font-size: 1.5rem;
-  /* border-radius: 0.5rem; */
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   /* border-radius: 0.5rem; */
 }
 .main-container .middle-container .search-container .search-icon {
-  width: 12%;
+  width: 8.6%;
   height: auto;
-  padding-right: 1.7rem;
-  padding-top: 0.1rem;
+  height: auto;
   background-color: white;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   /* border-radius: 0.5rem; */
 }
 /* search container end ---------------  */
@@ -54,12 +55,16 @@
 .main-container .middle-container .list-container {
   margin-top: 0.5rem;
 }
-.main-container .middle-container .list-container .single-data-container {
+.middle-container .list-container .single-data-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   /* border: 1px solid red; */
+}
+.list-container .single-data-container:visited {
+  background-color: red;
 }
 .main-container
   .middle-container
@@ -82,12 +87,31 @@
   height: 4rem;
   border-radius: 50%;
 }
+.main-container
+  .middle-container
+  .list-container
+  .single-data-container
+  .song-details
+  .title-artist
+  h3 {
+  color: white;
+  font-size: 1.2rem;
+}
+.main-container
+  .middle-container
+  .list-container
+  .single-data-container
+  .song-details
+  .title-artist
+  > p {
+  color: rgba(235, 229, 229, 0.808);
+}
 /* list container end ------------------------ */
 
 /* middle container end ---------------------  */
 
 /* last container start -----------------  */
-.main-container .last-container {
+.last-container {
   flex-basis: 35%;
   /* border: 1px solid blue; */
   padding: 2rem;
@@ -113,7 +137,7 @@
 }
 .single-song-container .artist {
   font-size: 2rem;
-  color: rgb(70, 12, 141);
+  color: rgb(61, 60, 62);
 }
 
 /* music control container -------------------  */
@@ -138,10 +162,12 @@
 .main-container .music-control-container .second-control .pause-icon {
   width: 3rem;
   cursor: pointer;
+  background-color: white;
 }
 .main-container .music-control-container .second-control .prev-icon {
   width: 3rem;
   cursor: pointer;
+  background-color: white;
 }
 .main-container .music-control-container .second-control .play-icon {
   width: 3rem;
@@ -150,6 +176,7 @@
 .main-container .music-control-container .second-control .next-icon {
   width: 3rem;
   cursor: pointer;
+  background-color: white;
 }
 .main-container .music-control-container .third-control .volume-icon {
   width: 3rem;

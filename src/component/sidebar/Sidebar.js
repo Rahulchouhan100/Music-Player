@@ -1,53 +1,55 @@
-import React, { useState, useEffect } from "react";
-import "./sidebar.css";
 import logo from "../../assest/logo.png";
+import "./sidebar.css";
 
-const Sidebar = () => {
-  const [data, setData] = useState(null);
-  const apiEndpoint = "https://api.ss.dev/resource/api";
-  const query = `query GetPlaylists {
-    getPlaylists {
-      id
-      title
-    }
-  }`;
-
-  const getData = () => {
-    fetch(apiEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => setData(data?.data?.getPlaylists))
-      .catch(console.error);
+const Sidebar = ({
+  setShowForYou,
+  setShowTopTracks,
+  setShowFavorites,
+  setShowRecentlyPlayed,
+}) => {
+  const handleForYouClick = () => {
+    setShowForYou(true);
+    setShowTopTracks(false);
+    setShowFavorites(false);
+    setShowRecentlyPlayed(false);
   };
 
-  useEffect(() => {
-    getData();
-  }, []);
-  if (!data) return;
+  const handleTopTracksClick = () => {
+    setShowForYou(false);
+    setShowTopTracks(true);
+    setShowFavorites(false);
+    setShowRecentlyPlayed(false);
+  };
+
+  const handleFavoritesClick = () => {
+    setShowForYou(false);
+    setShowTopTracks(false);
+    setShowFavorites(true);
+    setShowRecentlyPlayed(false);
+  };
+
+  const handleRecentlyPlayedClick = () => {
+    setShowForYou(false);
+    setShowTopTracks(false);
+    setShowFavorites(false);
+    setShowRecentlyPlayed(true);
+  };
+
   return (
     <div className="sidebar">
       <div>
-        <img src={logo} alt="spotify-logo" className="logo" />
+        <img src={logo} alt="" className="logo" />
         <ul>
-          {data.map((datas) => {
-            return (
-              <li key={datas.id}>
-                <p>{datas.title}</p>
-              </li>
-            );
-          })}
+          <li onClick={handleForYouClick}>For You</li>
+          <li onClick={handleTopTracksClick}>Top Tracks</li>
+          <li onClick={handleFavoritesClick}>Favorites</li>
+          <li onClick={handleRecentlyPlayedClick}>Recently Played</li>
         </ul>
-        ;
       </div>
       <div>
         <img
-          src="https://randomuser.me/api/portraits/men/40.jpg"
-          alt="profile-photo"
+          src="https://randomuser.me/api/portraits/men/36.jpg"
+          alt=""
           className="profile-photo"
         />
       </div>
