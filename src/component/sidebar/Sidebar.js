@@ -1,26 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./sidebar.css";
 import logo from "../../assest/logo.png";
 
 const Sidebar = () => {
+  const [data, setData] = useState(null);
+  const apiEndpoint = "https://api.ss.dev/resource/api";
+  const query = `query GetPlaylists {
+    getPlaylists {
+      id
+      title
+    }
+  }`;
+
+  const getData = () => {
+    fetch(apiEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data?.data?.getPlaylists))
+      .catch(console.error);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  if (!data) return;
   return (
     <div className="sidebar">
       <div>
         <img src={logo} alt="spotify-logo" className="logo" />
         <ul>
-          <li>
-            <a href="">For You</a>
-          </li>
-          <li>
-            <a href="">Top Tracks</a>
-          </li>
-          <li>
-            <a href="">Favourites</a>
-          </li>
-          <li>
-            <a href="">Recently played</a>
-          </li>
+          {data.map((datas) => {
+            return (
+              <li key={datas.id}>
+                <p>{datas.title}</p>
+              </li>
+            );
+          })}
         </ul>
+        ;
       </div>
       <div>
         <img

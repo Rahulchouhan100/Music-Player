@@ -23,8 +23,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* border: 1px solid #000; */
   /* border: 1px solid gray; */
   /* border-radius: 0.5rem; */
+  /* padding: 1rem; */
 
   width: 100%;
 }
@@ -34,13 +37,16 @@
   padding: 1rem;
   outline: none;
   font-size: 1.5rem;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
+  /* border-radius: 0.5rem; */
 }
 .main-container .middle-container .search-container .search-icon {
   width: 12%;
   height: auto;
   padding-right: 1.7rem;
-  /* background-color: white; */
+  padding-top: 0.1rem;
+  background-color: white;
+  /* border-radius: 0.5rem; */
 }
 /* search container end ---------------  */
 
@@ -103,10 +109,11 @@
 
 .single-song-container .title {
   font-size: 3rem;
+  color: white;
 }
 .single-song-container .artist {
   font-size: 2rem;
-  color: gray;
+  color: rgb(70, 12, 141);
 }
 
 /* music control container -------------------  */
